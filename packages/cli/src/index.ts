@@ -10,7 +10,8 @@
  *   ark publish <manifest.json> [--fingerprint F] --wallet W        upload fingerprint + manifest (free tier)
  *   ark job <manifest>                                              print the Nosana job definition
  *   ark boot <manifest> [--market ADDR] [--minutes 60]              needs NOSANA_API_KEY
- *   ark verify <manifest> --endpoint URL [--fingerprint F] [--sample N] [--attest --wallet W]
+ *   ark verify <manifest> --endpoint URL [--fingerprint F] [--sample N] [--attest --wallet W] [--deployment ID --stop]
+ *   ark stop <deployment-id>                                        stop a node now (billing is per uptime)
  *   ark list                                                        archived models on Arweave
  *
  * <manifest> may be a local file or an Arweave id.
@@ -36,6 +37,7 @@ import {
   jobDefinition,
   boot,
   waitForEndpoint,
+  stop,
   makeAttestation,
   attestationTags,
   generateWallet,
@@ -276,6 +278,22 @@ async function main() {
         out({ attestation: up.id, url: `https://arweave.net/${up.id}` });
       }
       process.exitCode = report.verdict === "VERIFIED" ? 0 : report.verdict === "MISMATCH" ? 2 : 3;
+      // Billing is per second of uptime: stop the node as soon as the check is done.
+      if (flags.stop && typeof flags.deployment === "string") {
+        const apiKey = process.env.NOSANA_API_KEY;
+        if (!apiKey) throw new Error("--stop needs NOSANA_API_KEY");
+        await stop(flags.deployment, apiKey);
+        console.error(`stopped deployment ${flags.deployment}`);
+      }
+      return;
+    }
+
+    case "stop": {
+      const apiKey = process.env.NOSANA_API_KEY;
+      if (!apiKey) throw new Error("set NOSANA_API_KEY");
+      if (!pos[0]) throw new Error("usage: ark stop <deployment-id>");
+      await stop(pos[0], apiKey);
+      out({ stopped: pos[0] });
       return;
     }
 
