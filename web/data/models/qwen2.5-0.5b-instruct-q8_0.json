@@ -1,0 +1,35 @@
+{
+  "spec": "ark/0.1",
+  "name": "qwen2.5-0.5b-instruct-q8_0",
+  "version": "1",
+  "description": "Qwen2.5 0.5B Instruct, 8-bit GGUF. Small enough to boot on any Nosana GPU.",
+  "license": {
+    "spdx": "apache-2.0"
+  },
+  "origin": {
+    "publisher": "Qwen (Alibaba Cloud)",
+    "sourceUrl": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF",
+    "retrievedAt": "2026-11-27T00:50:12.969Z"
+  },
+  "tier": "anchored",
+  "files": [
+    {
+      "path": "qwen2.5-0.5b-instruct-q8_0.gguf",
+      "bytes": 675710816,
+      "sha256": "ca59ca7f13d0e15a8cfa77bd17e65d24f6844b554a7b6c12e07a5f89ff76844e",
+      "mirrors": [
+        "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q8_0.gguf"
+      ]
+    }
+  ],
+  "runtime": {
+    "engine": "llama.cpp",
+    "image": "ghcr.io/ggml-org/llama.cpp:server-cuda",
+    "args": [
+      "-c",
+      "4096"
+    ],
+    "minVramGb": 2
+  },
+  "createdAt": "2026-11-27T00:50:14.034Z"
+}

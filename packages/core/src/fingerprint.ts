@@ -54,10 +54,10 @@ export interface Policy {
 
 /** Defaults calibrated in experiments/fingerprint/RESULTS.md. */
 export const DEFAULT_POLICY: Policy = {
-  minMeanAgreement: 0.9,
-  maxMeanAbsDelta: 0.02,
-  failBelowAgreement: 0.75,
-  failAboveDelta: 0.05,
+  minMeanAgreement: 0.95,
+  maxMeanAbsDelta: 0.005,
+  failBelowAgreement: 0.85,
+  failAboveDelta: 0.015,
 };
 
 export interface Report {

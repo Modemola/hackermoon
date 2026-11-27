@@ -1,5 +1,26 @@
 # Feasibility Study: Decentralize AI Hackathon, Round 2
 
+> **Update, 27 Nov 2026 (later the same day): confirmed findings. These replace the estimates below where they differ.**
+>
+> **Rules, from decentralizeai.tech:**
+> - You can enter as many times as you like, in either round.
+> - Judges shortlist entries by readership and quality, then vote.
+> - Projects are judged on technical depth, originality, impact, and verifiable evidence (code, a URL, or metrics). Mockups are not eligible.
+> - The judging rubric rewards citing specific projects, papers and people.
+> - Judges include Sjoerd Dijkstra (Nosana co-founder) and Valeria Kholostenko (Decentralized Storage Alliance).
+>
+> **Competition:** the `#decentralize-ai-hackathon` tag has 57 stories. Weight registries and receipts are crowded: ModelSeal, ModelProof ×2, OpenWeightHub, Bothy, Proof-of-Assay, VeriTrace and SealedBench. The *Immutable Architecture* entry explicitly calls verifying remote inference unsolved. Ark targets exactly that.
+>
+> **Live prices:**
+> - Nosana RTX 3060 costs $0.04/h and RTX 4090 $0.36/h, so a cross-GPU test is under $1.
+> - Arweave via Turbo costs **$46/GiB**, much higher than the earlier $3–8 estimate. Turbo's free tier covers items up to 105 KiB, so manifests and fingerprints (~11 KB) are free, and weights are preserved selectively.
+>
+> **Risk spike 2 (fingerprint separation): PASSED on CPU.** Honest Δ ≤ 0.0002; the closest swap (fp16) shows Δ 0.025, about 130× higher. See `experiments/fingerprint/RESULTS.md`.
+>
+> **Risk spike 1 (boot from storage):** the generated boot script was tested for real. It fetched 675 MB, checked SHA-256, and was healthy in 12 s. It has not yet been run on a Nosana node; that needs an API key.
+>
+> **Built:** `@ark/core`, the CLI, the Next.js gallery, 15 passing tests, and a draft post (`docs/hackernoon-post-draft.md`).
+
 Date: 27 Nov 2026. Deadline: 27 Feb 2027 (about 13 weeks left).
 Method: web research on the rules, the sponsors' technology, and entries competitors have already published. I could not open decentralizeai.tech or hackernoon.com directly because this session's network blocks them. Facts below come from search results and need a manual check (see Open questions).
 
