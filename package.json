@@ -1,0 +1,13 @@
+{
+  "name": "ark",
+  "private": true,
+  "description": "Ark: a permanent, bootable, verifiable archive of open AI models (Arweave + Nosana).",
+  "license": "Apache-2.0",
+  "workspaces": ["packages/core", "packages/cli", "web"],
+  "scripts": {
+    "build": "npm run build -w @ark/core && npm run build -w @ark/cli",
+    "test": "npm test -w @ark/core",
+    "ark": "node packages/cli/dist/index.js"
+  },
+  "engines": { "node": ">=20" }
+}

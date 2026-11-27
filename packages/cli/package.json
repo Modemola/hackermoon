@@ -1,0 +1,9 @@
+{
+  "name": "@ark/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": { "ark": "dist/index.js" },
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "dependencies": { "@ark/core": "0.1.0" },
+  "devDependencies": { "typescript": "5.9.3", "@types/node": "22.19.1" }
+}

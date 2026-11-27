@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build-test/
+.next/
+*.gguf
+.ark/
+*.jwk.json
+.env*
+!.env.example
+experiments/**/__pycache__/
